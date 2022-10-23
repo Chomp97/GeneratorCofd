@@ -14,7 +14,8 @@ enum Virtue{
     Patient,
     Peaceful,
     Righteous,
-    Trustworthy
+    Trustworthy,
+    LastVirtue
     };
 
 std::map<Virtue, std::string> mapVirtues;

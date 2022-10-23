@@ -13,7 +13,8 @@ enum Vice{
     Dogmatic,
     Hasty,
     Hateful,
-    Pessimistic
+    Pessimistic,
+    LastVice
     };
 
 std::map<Vice, std::string> mapVices;

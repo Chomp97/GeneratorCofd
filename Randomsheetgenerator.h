@@ -1,5 +1,0 @@
-namespace randomSheetGen{
-    class randomSheetGenerator{
-
-    };
-}
