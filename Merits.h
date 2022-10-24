@@ -2,7 +2,10 @@
 
 struct Merit{
     std::string name;
-    unsigned int dots;
+    unsigned int rating;
+    std::string description;
+    std::string prerequisites;
 
-    Merit(std::string n, unsigned int d) : name(std::move(n)), dots(d){};
+    Merit() : name(""), rating(0), description(""), prerequisites(""){};
+    Merit(std::string n, unsigned int r) : name(std::move(n)), rating(r){};
 };
