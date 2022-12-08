@@ -50,48 +50,58 @@ class randomSheetGenerator{
         charSheet.age(ageDistribution(gen));
         charSheet.virtue(static_cast<Virtue>(virtueDistribution(gen)));
         charSheet.vice(static_cast<Vice>(viceDistribution(gen)));
+        generateRandomAttributes();
+        generateRandomSkills();
         // randomize merits TODO after serialization of tables
         generateRandomMerits();
         
     }
 
-    void generateRandomMerits(){
+    void generateRandomAttributes(){
         int distributions [] = {3,4,5};
         bool doneMental,donePhysical,doneSocial = false;
         std::uniform_int_distribution<int> attributeDistribution(1,3);
         for(int i = 0; i < 3; i++){
             int pool = distributions[i];
             bool goOn = true;
+            int pivot = 0;
             while (goOn){
-                int pivot = attributeDistribution(gen);
+                pivot = attributeDistribution(gen);
                 switch (pivot){
                     case 1:
-                        if (doneMental){
-                            continue;
+                        if (!doneMental){
+                            doneMental = true;
+                            assignRandomMentalAttr(pool);
                         }
-                        assignRandomMental(pool);
-                            break;
+                        break;
             
                     case 2:
-                        if (donePhysical){
-                            continue;
+                        if (!donePhysical){
+                            donePhysical = true;
+                            assignRandomPhysicalAttr(pool);
                         }
-                        assignRandomPhysical(pool);
-                            break;
+                        break;
 
                     case 3:
-                        if (doneSocial){
-                            continue;
+                        if (!doneSocial){
+                            doneSocial = true;
+                            assignRandomSocialAttr(pool);
                         }
-                        assignRandomSocial(pool);
-                            break;
-                } pivot:
+                        break;
+                }
             }
         }
     }
 
-    void assignRandomMental(int pool){
-        bool doneInt,doneWits,doneRes = false;
+    void assignAttributeOnPivot(bool &done,unsigned int &attr, int chunk){
+        if(!done){
+            done = true;
+            attr = chunk;
+        }
+    }
+
+    void cycleThroughPivot(int pool, unsigned int &attrPow, unsigned int &attrFin, unsigned int &attrRes){
+        bool donePow,doneFin,doneRes = false;
         while(pool > 0){
             std::uniform_int_distribution<int> assignDistribution(1,pool);
             int chunk = assignDistribution(gen);
@@ -102,28 +112,41 @@ class randomSheetGenerator{
             while (goOn){
                 switch (pivot){
                     case 1:
+                        assignAttributeOnPivot(donePow, attrPow, chunk);
                         break;
             
                     case 2:
-                        
+                        assignAttributeOnPivot(doneFin, attrFin, chunk);
                         break;
             
                     case 3:
-                        
+                        assignAttributeOnPivot(doneRes, attrRes, chunk);
                         break;
+                }
+                pivot = assignAttribute(gen);
+                goOn = donePow && doneFin && doneRes;
             }
-            }
-            
-            
         }
     }
 
-    void assignRandomPhysical(int pool){
+    void assignRandomPhysicalAttr(int pool){
+        cycleThroughPivot(pool, charSheet.pAtt_.strength, charSheet.pAtt_.dexterity, charSheet.pAtt_.stamina);
+    }
+
+    void assignRandomSocialAttr(int pool){
+        cycleThroughPivot(pool, charSheet.sAtt_.presence, charSheet.sAtt_.manipulation, charSheet.sAtt_.composure);
+    }
+
+    void assignRandomMentalAttr(int pool){
+        cycleThroughPivot(pool, charSheet.mAtt_.intelligence, charSheet.mAtt_.wits, charSheet.mAtt_.resolve);
+    }
+
+    void generateRandomMerits(){
 
     }
 
-    void assignRandomSocial(int pool){
-
+    void generateRandomSkills(){
+        
     }
 };
 
