@@ -12,14 +12,17 @@ class CharSheetCofd{
     Virtue virtue_;
     Vice vice_;
     std::vector<Merit> merits;
+    std::string mSkillsNames[8] = {"academics","computer","crafts","investigation","medicine","occult","politics","science"};
+    std::string pSkillsNames[8] = {"athletics","brawl","drive","firearms","larceny","stealth","survival","weaponry"};
+    std::string sSkillsNames[8] = {"animal_ken","empathy","expression","intimidation","persuasion","socialize","streetwise","subterfuge"};
 
     public:
     mentalAttributes mAtt_ {1};
     physicalAttributes pAtt_ {1};
     socialAttributes sAtt_ {1};
-    mentalSkills mSkills_ {0};
-    physicalSkills pSkills_ {0};
-    socialSkills sSkills_ {0};
+    skillSet mSkills_ = skillSet(mSkillsNames);
+    skillSet pSkills_ = skillSet(pSkillsNames);
+    skillSet sSkills_ = skillSet(sSkillsNames);
     unsigned int size_ = 5;
     unsigned int speed_;
     unsigned int defense_;

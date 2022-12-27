@@ -1,34 +1,28 @@
 #include <stdio.h>
 
+
+struct skillSet{
+    public:
+    unsigned int points[8] {0};
+    std::string names[8];
+    skillSet(std::string names_[8]){
+        for (size_t i = 0; i < 8; i++){
+            names[i] = names_[i];
+        }
+    }
+};
+
 struct mentalSkills{
-    unsigned int academics;
-    unsigned int computer;
-    unsigned int crafts;
-    unsigned int investigation;
-    unsigned int medicine;
-    unsigned int occult;
-    unsigned int politics;
-    unsigned int science;
+    unsigned int points[8] {0};
+    std::string names[8] = {"academics","computer","crafts","investigation","medicine","occult","politics","science"};
 };
 
 struct physicalSkills{
-    unsigned int athletics;
-    unsigned int brawl;
-    unsigned int drive;
-    unsigned int firearms;
-    unsigned int larceny;
-    unsigned int stealth;
-    unsigned int survival;
-    unsigned int weaponry;
+    unsigned int points[8] {0};
+    std::string names[8] = {"athletics","brawl","drive","firearms","larceny","stealth","survival","weaponry"};
 };
 
 struct socialSkills{
-    unsigned int animal_ken;
-    unsigned int empathy;
-    unsigned int expression;
-    unsigned int intimidation;
-    unsigned int persuasion;
-    unsigned int socialize;
-    unsigned int streetwise;
-    unsigned int subterfuge;
+    unsigned int points[8] {0};
+    std::string names[8] = {"animal_ken","empathy","expression","intimidation","persuasion","socialize","streetwise","subterfuge"};
 };
