@@ -1,7 +1,7 @@
 #include <CharsheetCofd.h>
 #include <fstream>
 #include <random>
-#include <dasmig\namegen.hpp>
+#include <name-generator/dasmig/namegen.hpp>
 
 void mapTheVirtues(){
     mapVirtues[Virtue::Ambitious] = "Ambitious";
