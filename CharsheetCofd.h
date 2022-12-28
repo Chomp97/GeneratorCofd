@@ -7,7 +7,7 @@
 
 class CharSheetCofd{
     private:
-    std::string name_;
+    std::wstring name_;
     unsigned int age_;
     Virtue virtue_;
     Vice vice_;
@@ -31,8 +31,8 @@ class CharSheetCofd{
     unsigned int willpower_;
     unsigned int integrity_;
 
-    std::string name() const { return name_; }
-    void name(std::string n) { name_ = std::move(n);}
+    std::wstring name() const { return name_; }
+    void name(std::wstring n) { name_ = std::move(n);}
 
     unsigned int age() const { return age_; }
     void age(unsigned int age) { age_ = std::move(age);}

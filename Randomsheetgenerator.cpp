@@ -1,6 +1,7 @@
 #include <CharsheetCofd.h>
 #include <fstream>
 #include <random>
+#include <dasmig\namegen.hpp>
 
 void mapTheVirtues(){
     mapVirtues[Virtue::Ambitious] = "Ambitious";
@@ -37,7 +38,7 @@ class randomSheetGenerator{
     std::default_random_engine gen;
     CharSheetCofd charSheet;
     
-    std::string generateRandomName();
+    std::wstring generateRandomName();
     int generateRandomChar();
     void generateRandomAttributes();
     void generateRandomSkills();
@@ -53,10 +54,9 @@ class randomSheetGenerator{
     void assignRandomMentalSkill(int pool);    
 };
 
-std::string randomSheetGenerator::generateRandomName(){
-    // TODO
-    return "miao";
-    }
+std::wstring randomSheetGenerator::generateRandomName(){
+    return dasmig::ng::instance().get_name().append_surname();
+}
 
 int randomSheetGenerator::generateRandomChar(){
     std::uniform_int_distribution<int> ageDistribution(8,80);
