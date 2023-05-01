@@ -1,7 +1,7 @@
 #include <map>
 #include <string>
 
-enum Virtue{
+enum class Virtue{
     Ambitious,
     Courageous,
     Generous,

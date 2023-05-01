@@ -1,7 +1,7 @@
 #include <map>
 #include <string>
 
-enum Vice{
+enum class Vice{
     Ambitious,
     Arrogant,
     Competitive,
