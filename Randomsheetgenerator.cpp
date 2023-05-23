@@ -264,8 +264,7 @@ void randomSheetGenerator::cycleSkillThroughPivot(int pool, skillSet &skills){
         pool -= chunk;
         std::uniform_int_distribution<int> assignSkill(1,8); // randomize the skill we assign the points to
         int pivot = assignSkill(gen); // index of skill
-        while (skills.points[pivot] + chunk > 5)
-        {
+        while (skills.points[pivot] + chunk > 5){
             pivot = assignSkill(gen);
         }
         skills.points[pivot] += chunk;
