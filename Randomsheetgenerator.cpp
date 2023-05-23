@@ -83,13 +83,9 @@ int randomSheetGenerator::generateRandomChar(){
     charSheet.age(ageDistribution(gen));
     charSheet.virtue(static_cast<Virtue>(virtueDistribution(gen)));
     charSheet.vice(static_cast<Vice>(viceDistribution(gen)));
-    std::cout << "attributes" << std::endl;
     generateRandomAttributes();
-    std::cout << "skills" << std::endl;
     generateRandomSkills();
-    std::cout << "merits" << std::endl;
     generateRandomMerits();
-    std::cout << "derivated attr" << std::endl;
     setDerivatedAttributes();
 
     return 1;
@@ -153,7 +149,8 @@ void randomSheetGenerator::generateRandomMerits(){
 
 void randomSheetGenerator::generateRandomSkills(){
     int distributions [] = {11,7,4};
-    bool doneMental,donePhysical,doneSocial = false;
+    bool doneMental,donePhysical,doneSocial;
+    doneMental = donePhysical = doneSocial = false;
     std::uniform_int_distribution<int> skillDistribution(1,3);
     for(int i = 0; i < 3; i++){
         int pool = distributions[i];
@@ -189,7 +186,8 @@ void randomSheetGenerator::generateRandomSkills(){
 
 void randomSheetGenerator::generateRandomAttributes(){
     int distributions [] = {3,4,5};
-    bool doneMental,donePhysical,doneSocial = false;
+    bool doneMental,donePhysical,doneSocial;
+    doneMental = donePhysical = doneSocial = false;
     std::uniform_int_distribution<int> attributeDistribution(1,3);
     for(int i = 0; i < 3; i++){
         int pool = distributions[i];
@@ -231,7 +229,8 @@ void randomSheetGenerator::assignAttributeOnPivot(bool &done,unsigned int &attr,
 }
 
 void randomSheetGenerator::cycleAttributeThroughPivot(int pool, unsigned int& attrPow, unsigned int& attrFin, unsigned int& attrRes){
-    bool donePow,doneFin,doneRes = false;
+    bool donePow,doneFin,doneRes;
+    donePow = doneFin = doneRes = false;
     while(pool > 0){
         std::uniform_int_distribution<int> assignDistribution(1,std::min(pool,4));
         int chunk = assignDistribution(gen);
@@ -262,7 +261,7 @@ void randomSheetGenerator::cycleSkillThroughPivot(int pool, skillSet &skills){
         std::uniform_int_distribution<int> assignDistribution(1,std::min(pool,5)); // distribute from 1 to 5 points
         int chunk = assignDistribution(gen); // points to assign
         pool -= chunk;
-        std::uniform_int_distribution<int> assignSkill(1,8); // randomize the skill we assign the points to
+        std::uniform_int_distribution<int> assignSkill(0,7); // randomize the skill we assign the points to
         int pivot = assignSkill(gen); // index of skill
         while (skills.points[pivot] + chunk > 5){
             pivot = assignSkill(gen);
