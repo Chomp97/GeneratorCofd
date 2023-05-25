@@ -48,7 +48,7 @@ class CharSheetCofd{
     Vice vice() const { return vice_; }
     void vice(Vice vice) { vice_ = std::move(vice);}
 
-    nlohmann::json serialize(){
+    nlohmann::json toJson(){
         nlohmann::json sheet;
         sheet["name"] = name_;
         sheet["age"] = age_;
