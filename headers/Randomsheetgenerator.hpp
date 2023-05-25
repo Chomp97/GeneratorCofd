@@ -2,10 +2,10 @@
 #include <fstream>
 #include <sstream>
 #include <random>
-#include "name-generator/dasmig/namegen.hpp"
+#include "../name-generator/dasmig/namegen.hpp"
 #ifndef JSON
 #define JSON
-#include "nlohmann/single_include/nlohmann/json.hpp"
+#include "../nlohmann/single_include/nlohmann/json.hpp"
 #endif
 
 #define PATH_MENTALMERITS "./jsons/mentalMerits.json"
@@ -292,12 +292,4 @@ void randomSheetGenerator::assignRandomMentalAttr(int pool){
 
 void randomSheetGenerator::assignRandomMentalSkill(int pool){
     cycleSkillThroughPivot(pool, charSheet.sSkills_);
-}
-
-int main(){
-    for(int i = 0; i < 100; i++){
-        randomSheetGenerator r = randomSheetGenerator();
-        r.generateRandomChar();
-        r.sheet().prettyPrint();
-    }
 }

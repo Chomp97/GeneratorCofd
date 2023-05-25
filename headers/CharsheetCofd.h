@@ -7,7 +7,7 @@
 #define maxMeritDots 7
 #ifndef JSON
 #define JSON
-#include "nlohmann/single_include/nlohmann/json.hpp"
+#include "../nlohmann/single_include/nlohmann/json.hpp"
 #endif
 
 class CharSheetCofd{

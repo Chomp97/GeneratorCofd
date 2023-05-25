@@ -2,7 +2,7 @@
 #include <iostream>
 #ifndef JSON
 #define JSON
-#include "nlohmann/single_include/nlohmann/json.hpp"
+#include "../nlohmann/single_include/nlohmann/json.hpp"
 #endif
 
 struct Prerequisite{
